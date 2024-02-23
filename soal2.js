@@ -68,13 +68,14 @@ source=9.67.116.98:8000] ceased
 fs.writeFile("log.txt", payload, (err) => {
   if (err) {
     console.log(err);
+    return;
   }
   console.log("Successfully Written to File log.txt");
-});
-
-fs.readFile("log.txt", "utf-8", (err, data) => {
-  if (err) {
-    console.log(err);
-  }
-  console.log("Data from log.txt :", data);
+  fs.readFile("log.txt", "utf-8", (err, data) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log("Data from log.txt :", data);
+  });
 });
